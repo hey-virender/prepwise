@@ -43,6 +43,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
+      setIsLoading(true);
       if (type === "sign-in") {
         const { email, password } = values;
         const userCredentials = await signInWithEmailAndPassword(
@@ -83,6 +84,8 @@ const AuthForm = ({ type }: { type: FormType }) => {
     } catch (error) {
       console.log(error);
       toast.error(`There was an error ${error}`);
+    }finally{
+      setIsLoading(false);
     }
   }
 
