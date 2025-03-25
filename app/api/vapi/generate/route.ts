@@ -10,6 +10,7 @@ export async function GET(){
 export async function POST(req:Request){
   
   const { type,role,level,techstack,amount,userid,coverImage} = await req.json()
+  console.log(type,role,level,techstack,amount,userid)
    try {
     const {text:questions} = await generateText({
       model: google('gemini-2.0-flash-001'),
@@ -34,6 +35,9 @@ export async function POST(req:Request){
       coverImage: coverImage || getRandomInterviewCover(),
       createdAt: new Date().toISOString()
     }
+
+    console.log("interview",interview)
+    
     await db.collection("interviews").add(interview)
     return Response.json({success:true,},{status:200})
    } catch (error) {

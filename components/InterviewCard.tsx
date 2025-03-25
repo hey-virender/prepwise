@@ -6,7 +6,7 @@ import { Button } from './ui/button'
 import Link from 'next/link'
 import DisplayTechIcons from './DisplayTechIcons'
 
-const InterviewCard = ({interviewId,userId,role,type,techstack,createdAt}:InterviewCardProps) => {
+const InterviewCard = ({interviewId,userId,role,type,techstack,createdAt,coverImage}:InterviewCardProps) => {
   const feedback = null as Feedback | null
   const normalizedType = /mix/gi.test(type) ? "mixed" : type
   const formattedDate = dayjs(createdAt).format("MMM D, YYYY")
@@ -17,7 +17,7 @@ const InterviewCard = ({interviewId,userId,role,type,techstack,createdAt}:Interv
           <div className='absolute top-0 right-0 w-fit px-4 py-2 rounded-lg bg-light-600'>
             <p className='badge-text'>{normalizedType}</p>
           </div>
-          <Image src={getRandomInterviewCover()} alt="cover image" width={90} height={90} className='rounded-full object-fit size-[90px]'/>
+          <Image src={coverImage ||getRandomInterviewCover()} alt="cover image" width={90} height={90} className='rounded-full object-fit size-[90px]'/>
         <h3 className='mt-5 capitalize'>{role} Interview</h3>
         <div className="flex flex-row gap-5 mt-3">
           <div className="flex gap-2">

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-
+//create dedicated toast for auth error for better clarification
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
