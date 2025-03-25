@@ -6,13 +6,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
-
+import { LoaderCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { toast } from "sonner";
 import FormField from "./FormField";
 import { useRouter } from "next/navigation";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { auth } from "@/firebase/client";
 import { signIn, signUp } from "@/lib/actions/auth.action";
 
@@ -26,6 +29,7 @@ const authFormSchema = (type: FormType) => {
 
 const AuthForm = ({ type }: { type: FormType }) => {
   const router = useRouter();
+  const [isLoading, setIsLoading] = React.useState(false);
   const formSchema = authFormSchema(type);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -41,11 +45,11 @@ const AuthForm = ({ type }: { type: FormType }) => {
     try {
       if (type === "sign-in") {
         const { email, password } = values;
-        const userCredentials = await signInWithEmailAndPassword(auth,
+        const userCredentials = await signInWithEmailAndPassword(
+          auth,
           email,
           password,
-        )
-      
+        );
 
         const idToken = await userCredentials.user.getIdToken();
         if (!idToken) {
@@ -121,7 +125,13 @@ const AuthForm = ({ type }: { type: FormType }) => {
               placeholder="Choose your password"
             />
             <Button className="btn" type="submit">
-              {isSignIn ? "Sign In" : "Create an Account"}
+              {isLoading ? (
+                <LoaderCircle className="animate-spin ease-linear duration-200" />
+              ) : isSignIn ? (
+                "Sign In"
+              ) : (
+                "Create an Account"
+              )}
             </Button>
           </form>
           <p className="text-center">
