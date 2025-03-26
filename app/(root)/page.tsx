@@ -1,10 +1,11 @@
 import InterviewCard from "@/components/InterviewCard";
 import { Button } from "@/components/ui/button";
+import { getCurrentUser } from "@/lib/actions/auth.action";
 import {
-  getCurrentUser,
+
   getInterviewByUserId,
   getLatestInterviews,
-} from "@/lib/actions/auth.action";
+} from "@/lib/actions/general.action";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -51,11 +52,8 @@ const page = async () => {
           {hasPastInterviews ? (
             userInterviews?.map((interview) => (
               <InterviewCard
-                key={interview.id}
-                role={interview.role}
-                type={interview.type}
-                techstack={interview.techstack}
-                coverImage={interview.coverImage}
+              key={interview.id}
+               {...interview}
               />
             ))
           ) : (
@@ -69,11 +67,8 @@ const page = async () => {
         {hasUpcomingInterviews ? (
             latestInterviews?.map((interview) => (
               <InterviewCard
-                key={interview.id}
-                role={interview.role}
-                type={interview.type}
-                techstack={interview.techstack}
-                coverImage={interview.coverImage}
+              key={interview.id}
+               {...interview}
               />
             ))
           ) : (
