@@ -33,7 +33,7 @@ export async function POST(req:Request){
       role,type,level,techstack:techstack.split(','),questions:JSON.parse(questions),userId:userid,
       finalized:true,
       coverImage: coverImage || getRandomInterviewCover(),
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
     }
 
     console.log("interview",interview)

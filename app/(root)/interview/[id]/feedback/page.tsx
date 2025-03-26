@@ -18,6 +18,7 @@ const page = async({params}:RouteParams) => {
     return redirect("/")
   }
   const feedback = await getFeedbackByInterviewId({interviewId:id,userId:user?.id});
+  console.log(id,user.id,feedback)
   return (
     <section className="section-feedback">
     <div className="flex flex-row justify-center">

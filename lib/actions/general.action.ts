@@ -51,6 +51,20 @@ system:
       "You are a professional interviewer analyzing a mock interview. Your task is to evaluate the candidate based on structured categories",
 
     })
+
+    const feedbackExists = await getFeedbackByInterviewId({interviewId,userId});
+    if(feedbackExists){
+     await db.collection('feedbacks').doc(feedbackExists.id).update({
+        totalScore,
+        categoryScores,
+        finalAssessment,
+        strengths,
+        areasForImprovement,
+        updatedAt: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
+      })
+      return {success:true,feedbackId:feedbackExists.id}
+    }
+
     const feedback = await db.collection('feedbacks').add( {
       interviewId,
       userId,
@@ -59,7 +73,7 @@ system:
       finalAssessment,
       strengths,
       areasForImprovement,
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
     })
     return {success:true,feedbackId:feedback.id}
   } catch (error) {
@@ -71,13 +85,15 @@ system:
 
 export async function getFeedbackByInterviewId(params:GetFeedbackByInterviewIdParams):Promise<Feedback | null>{
   const {interviewId,userId} = params;
-  const feedback = await db.collection('feedback').where('interviewId','==',interviewId).where('userId','==',userId).limit(1).get();
+  const feedback = await db.collection('feedbacks').where('interviewId','==',interviewId).where('userId','==',userId).limit(1).get();
+ 
 
   if(feedback.empty){
     return null
   }
 
  const feedbackDoc = feedback.docs[0];
+ 
  return {
    id:feedbackDoc.id,
    ...feedbackDoc.data()
