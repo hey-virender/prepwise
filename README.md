@@ -6,12 +6,6 @@ Built using **Next.js, TypeScript, Firebase, Google Gemini AI, Vapi Voice AI, Ta
 
 ---
 
-## 🚀 Live Demo
-
-**Website:** https://your-demo-url.com
-
----
-
 ## 📖 Overview
 
 Preparing for interviews can be challenging, especially without access to experienced mentors or realistic practice environments. Traditional interview preparation methods often rely on static question banks and lack personalized feedback.
