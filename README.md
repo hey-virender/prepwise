@@ -1,36 +1,426 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎙️ PrepWise - AI Powered Interview Preparation Platform
 
-## Getting Started
+PrepWise is an AI-powered mock interview platform that helps users prepare for technical and behavioral interviews through realistic voice-based conversations. The platform generates customized interview questions, conducts live AI interviews, evaluates responses, and provides detailed feedback to improve interview performance.
 
-First, run the development server:
+Built using **Next.js, TypeScript, Firebase, Google Gemini AI, Vapi Voice AI, Tailwind CSS, and shadcn/ui**, PrepWise creates an immersive interview experience that closely simulates real-world recruitment processes.
+
+---
+
+## 🚀 Live Demo
+
+**Website:** https://your-demo-url.com
+
+---
+
+## 📖 Overview
+
+Preparing for interviews can be challenging, especially without access to experienced mentors or realistic practice environments. Traditional interview preparation methods often rely on static question banks and lack personalized feedback.
+
+PrepWise solves this problem by providing:
+
+* AI-generated interview questions
+* Voice-based interview simulations
+* Real-time AI conversations
+* Automated performance evaluation
+* Detailed interview feedback
+* Progress tracking and interview history
+
+The platform enables candidates to practice interviews anytime and receive actionable insights to improve their communication, confidence, and technical knowledge.
+
+---
+
+## ✨ Features
+
+### 🤖 AI Interview Generation
+
+Generate customized interviews based on:
+
+* Job Role
+* Experience Level
+* Technical Skills
+* Interview Type
+* Number of Questions
+
+Every interview is dynamically created using Google Gemini AI, ensuring unique and relevant questions.
+
+---
+
+### 🎤 Voice-Based Interviews
+
+Conduct interviews through natural voice conversations using Vapi AI.
+
+Features include:
+
+* Real-time voice interaction
+* Speech-to-text processing
+* AI-generated responses
+* Natural conversational flow
+* Human-like interview experience
+
+---
+
+### 📊 Detailed Feedback System
+
+After completing an interview, users receive:
+
+* Overall Interview Score
+* Communication Analysis
+* Technical Knowledge Assessment
+* Confidence Evaluation
+* Strength Identification
+* Improvement Suggestions
+
+This allows candidates to identify weaknesses and improve through continuous practice.
+
+---
+
+### 📚 Interview History
+
+Users can access all previous interviews including:
+
+* Interview Questions
+* User Responses
+* AI Feedback
+* Performance Scores
+* Historical Progress
+
+---
+
+### 🔐 Authentication & User Management
+
+Secure authentication powered by Firebase.
+
+Features:
+
+* User Registration
+* Login & Logout
+* Protected Routes
+* Session Management
+* Secure User Data Storage
+
+---
+
+### 📱 Responsive Design
+
+Fully optimized for:
+
+* Desktop
+* Tablet
+* Mobile Devices
+
+Users can practice interviews anytime from any device.
+
+---
+
+## 🏗️ System Architecture
+
+```text
+┌─────────────────────────┐
+│       Next.js App       │
+└────────────┬────────────┘
+             │
+             ▼
+┌─────────────────────────┐
+│     Firebase Auth       │
+└────────────┬────────────┘
+             │
+             ▼
+┌─────────────────────────┐
+│      Firestore DB       │
+└────────────┬────────────┘
+             │
+             ▼
+┌─────────────────────────┐
+│    Google Gemini AI     │
+└────────────┬────────────┘
+             │
+             ▼
+┌─────────────────────────┐
+│      Vapi Voice AI      │
+└─────────────────────────┘
+```
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+* Next.js 15
+* React
+* TypeScript
+* Tailwind CSS
+* shadcn/ui
+* Lucide Icons
+
+### Backend
+
+* Next.js Server Actions
+* Next.js API Routes
+
+### Database
+
+* Firebase Firestore
+
+### Authentication
+
+* Firebase Authentication
+
+### AI & Voice
+
+* Google Gemini AI
+* Vapi AI
+
+### Deployment
+
+* Vercel
+
+---
+
+## 📂 Project Structure
+
+```bash
+prepwise/
+│
+├── app/
+│   ├── (auth)/
+│   ├── dashboard/
+│   ├── interview/
+│   └── feedback/
+│
+├── components/
+│   ├── ui/
+│   ├── shared/
+│   └── interview/
+│
+├── lib/
+│   ├── firebase/
+│   ├── actions/
+│   └── ai/
+│
+├── constants/
+│
+├── public/
+│
+├── types/
+│
+└── utils/
+```
+
+---
+
+## ⚙️ Installation
+
+### Clone Repository
+
+```bash
+git clone https://github.com/hey-virender/prepwise.git
+```
+
+```bash
+cd prepwise
+```
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Create Environment Variables
+
+Create a `.env.local` file in the root directory.
+
+```env
+NEXT_PUBLIC_FIREBASE_API_KEY=
+
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+
+NEXT_PUBLIC_FIREBASE_APP_ID=
+
+GOOGLE_GENERATIVE_AI_API_KEY=
+
+VAPI_API_KEY=
+
+VAPI_ASSISTANT_ID=
+```
+
+### Run Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🔄 Application Workflow
 
-To learn more about Next.js, take a look at the following resources:
+### Step 1
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+User creates an account and logs in.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Step 2
 
-## Deploy on Vercel
+User selects:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* Role
+* Experience Level
+* Interview Type
+* Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Step 3
+
+Gemini AI generates customized interview questions.
+
+### Step 4
+
+Vapi AI conducts a live voice interview.
+
+### Step 5
+
+User answers questions verbally.
+
+### Step 6
+
+Responses are analyzed and evaluated.
+
+### Step 7
+
+Detailed AI-generated feedback is displayed.
+
+### Step 8
+
+Interview results are stored for future review.
+
+---
+
+## 📈 Performance Evaluation Metrics
+
+PrepWise evaluates users on:
+
+| Metric              | Description                  |
+| ------------------- | ---------------------------- |
+| Communication       | Clarity and articulation     |
+| Technical Knowledge | Subject understanding        |
+| Problem Solving     | Logical thinking ability     |
+| Confidence          | Delivery and professionalism |
+| Relevance           | Quality of answers           |
+| Completeness        | Coverage of key concepts     |
+
+---
+
+## 🎯 Use Cases
+
+### Students
+
+* Placement Preparation
+* Internship Interviews
+* Campus Recruitment
+
+### Fresh Graduates
+
+* Entry-Level Jobs
+* Technical Interviews
+* HR Interviews
+
+### Professionals
+
+* Career Switches
+* Promotion Interviews
+* Leadership Roles
+
+### Training Institutes
+
+* Candidate Evaluation
+* Interview Readiness Programs
+
+---
+
+## 🔒 Security Features
+
+* Firebase Authentication
+* Protected Routes
+* Secure API Communication
+* Environment Variable Protection
+* User-Specific Data Access
+* Firestore Security Rules
+
+---
+
+## 🚀 Future Enhancements
+
+* Video Interview Support
+* Facial Expression Analysis
+* Emotion Detection
+* Resume Analysis
+* Multi-Language Interviews
+* Coding Interview Module
+* System Design Interviews
+* AI Career Coach
+* Company-Specific Interview Tracks
+* Advanced Analytics Dashboard
+
+---
+
+## 💡 Key Learning Outcomes
+
+This project demonstrates expertise in:
+
+* Full Stack Development
+* Next.js Architecture
+* TypeScript Development
+* AI Integration
+* Prompt Engineering
+* Voice AI Systems
+* Firebase Ecosystem
+* Server Actions
+* Authentication Systems
+* Responsive UI Design
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome.
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit changes
+4. Push the branch
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 👨‍💻 Author
+
+**Virender Chauhan**
+
+* Portfolio: https://virenderchauhan.in
+* LinkedIn: https://linkedin.com/in/hey-virender
+* GitHub: https://github.com/hey-virender
+
+---
+
+## ⭐ Support
+
+If you found this project helpful, please consider giving it a star on GitHub.
+
+It helps others discover the project and supports future development.
